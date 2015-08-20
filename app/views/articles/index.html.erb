@@ -18,9 +18,9 @@
         <td><%= article.title %></td>
         <td><%= article.content %></td>
         <td><%= article.category %></td>
-        <td><%= link_to 'Show', article %></td>
-        <td><%= link_to 'Edit', edit_article_path(article) %></td>
-        <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', user_article_path(@user, article) %></td>
+        <td><%= link_to 'Edit', edit_user_article_path(@user, article) %></td>
+        <td><%= link_to 'Destroy', user_article_path(@user, article), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +28,6 @@
 
 <br>
 
-<%= link_to 'New Article', new_article_path %>
+<%= link_to 'New Article', new_user_article_path(@user, @article) %>
+
+<%= link_to 'Home', user_path(@user) %>

@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  resources :users do
+    resources :articles
+  end
+
+  resources :articles, only: [] do
+    resources :comments
+  end
   # resources :articles
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -33,9 +40,9 @@ Rails.application.routes.draw do
   #     resource :seller
   #   end
 
-  resources :articles do
-    resources :comments
-  end
+  # resources :articles do
+  #   resources :comments
+  # end
 
   # Example resource route with more complex sub-resources:
   #   resources :products do

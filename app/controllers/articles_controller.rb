@@ -4,7 +4,8 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all
+    @user = User.find(params[:user_id])
+    @articles = @user.articles
   end
 
   # GET /articles/1
@@ -14,21 +15,26 @@ class ArticlesController < ApplicationController
 
   # GET /articles/new
   def new
-    @article = Article.new
+    Rails::logger.info("----------------#{params[:user_id]}---------")
+    @user = User.find(params[:user_id])
+    @article = @user.articles.new
   end
 
   # GET /articles/1/edit
   def edit
+    @article = @user.articles.find(params[:id])
   end
 
   # POST /articles
   # POST /articles.json
   def create
-    @article = Article.new(article_params)
+    @user = User.find(params[:user_id])
+    Rails::logger.info("----------------#{article_params}---------")
+    @article = @user.articles.new(article_params)
 
     respond_to do |format|
       if @article.save
-        format.html { redirect_to @article, notice: 'Article was successfully created.' }
+        format.html { redirect_to user_article_path(@user, @article), notice: 'Article was successfully created.' }
         format.json { render :show, status: :created, location: @article }
       else
         format.html { render :new }
@@ -42,7 +48,7 @@ class ArticlesController < ApplicationController
   def update
     respond_to do |format|
       if @article.update(article_params)
-        format.html { redirect_to @article, notice: 'Article was successfully updated.' }
+        format.html { redirect_to user_article_path(@user, @article), notice: 'Article was successfully updated.' }
         format.json { render :show, status: :ok, location: @article }
       else
         format.html { render :edit }
@@ -54,9 +60,10 @@ class ArticlesController < ApplicationController
   # DELETE /articles/1
   # DELETE /articles/1.json
   def destroy
+    @article = @user.articles.find(params[:id])
     @article.destroy
     respond_to do |format|
-      format.html { redirect_to articles_url, notice: 'Article was successfully destroyed.' }
+      format.html { redirect_to user_articles_path, notice: 'Article was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -64,11 +71,13 @@ class ArticlesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_article
-      @article = Article.find(params[:id])
+      Rails::logger.info("----------------#{params}---------")
+      @user = User.find(params[:user_id])
+      @article = @user.articles.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:title, :content, :category)
+      params.require(:article).permit(:id, :title, :content, :category)
     end
 end

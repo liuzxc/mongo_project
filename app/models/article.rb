@@ -6,4 +6,5 @@ class Article
   validates :title, presence: true
 
   embeds_many :comments
+  belongs_to :user
 end
