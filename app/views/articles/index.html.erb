@@ -26,8 +26,14 @@
   </tbody>
 </table>
 
+<div>
+<%= paginate @articles %>
+</div>
+
 <br>
 
-<%= link_to 'New Article', new_user_article_path(@user, @article) %>
+<%= link_to '新建', new_user_article_path(@user, @article) %>
 
-<%= link_to 'Home', user_path(@user) %>
+<!-- <%= link_to 'My Account', user_path(@user) %> -->
+
+<!-- <%= link_to 'Home Page', home_url %> -->

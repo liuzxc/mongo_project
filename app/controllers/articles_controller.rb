@@ -5,7 +5,11 @@ class ArticlesController < ApplicationController
   # GET /articles.json
   def index
     @user = User.find(params[:user_id])
-    @articles = @user.articles
+    @articles = @user.articles.page params[:page]
+  end
+
+  def home
+    @all_articles = Article.all.page params[:page]
   end
 
   # GET /articles/1

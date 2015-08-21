@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get 'log_in' => 'sessions#new'
   get 'log_out' => 'sessions#destroy'
 
+  root 'articles#home', as: :home
+
   resources :sessions
 
   resources :users do

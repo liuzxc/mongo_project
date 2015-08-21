@@ -8,10 +8,12 @@
 </head>
 <body>
 
-
-
-<% flash.each do |key, value| %>
-  <%= key %>"><%= value %>
+<% if current_user %>
+  <%= link_to '我的账户', user_path(current_user) %>
+  <%= link_to '首页', home_path %>
+  <%= link_to '退出', log_out_path %>
+<% else %>
+  <%= link_to 'log_in', log_in_path %>
 <% end %>
 
 <%= yield %>
