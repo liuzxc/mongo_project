@@ -13,7 +13,8 @@
   <%= link_to '首页', home_path %>
   <%= link_to '退出', log_out_path %>
 <% else %>
-  <%= link_to 'log_in', log_in_path %>
+  <%= link_to '登录', log_in_path %>
+  <%= link_to '注册', sign_up_path %>
 <% end %>
 
 <%= yield %>
