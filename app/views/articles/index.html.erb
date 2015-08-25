@@ -1,16 +1,13 @@
-<table class="table">
-  <tbody>
+<div class="panel panel-default">
+  <div class="panel-heading"></div>
+  <ul class="list-group">
     <% @articles.each do |article| %>
-      <tr>
-        <td><h3><%= link_to article.title, user_article_path(@user, article) %></h3></td>
-        <td><h3><%= link_to "删除", [@user, article], method: :delete, data: { confirm: 'Are you sure?' } %></h3></td>
-      </tr>
+      <li class="list-group-item">
+        <%= link_to article.title, user_article_path(@user, article) %>
+      </li>
     <% end %>
-  </tbody>
-</table>
-
-<%= paginate @articles %>
-
-<br>
-
-<h3><%= link_to '新建', new_user_article_path(@user, @article) %></h3>
+  </ul>
+  <div class="panel-footer">
+    <%= paginate @articles %>
+  </div>
+</div>
