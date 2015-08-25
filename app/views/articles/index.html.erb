@@ -1,26 +1,9 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Articles</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Content</th>
-      <th>Category</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
+<table class="table">
   <tbody>
     <% @articles.each do |article| %>
       <tr>
-        <td><%= article.title %></td>
-        <td><%= article.content %></td>
-        <td><%= article.category %></td>
-        <td><%= link_to 'Show', user_article_path(@user, article) %></td>
-        <td><%= link_to 'Edit', edit_user_article_path(@user, article) %></td>
-        <td><%= link_to 'Destroy', user_article_path(@user, article), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><h3><%= link_to article.title, user_article_path(@user, article) %></h3></td>
+        <td><h3><%= link_to "删除", [@user, article], method: :delete, data: { confirm: 'Are you sure?' } %></h3></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,8 +13,4 @@
 
 <br>
 
-<%= link_to '新建', new_user_article_path(@user, @article) %>
-
-<!-- <%= link_to 'My Account', user_path(@user) %> -->
-
-<!-- <%= link_to 'Home Page', home_url %> -->
+<h3><%= link_to '新建', new_user_article_path(@user, @article) %></h3>

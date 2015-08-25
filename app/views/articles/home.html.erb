@@ -1,23 +1,10 @@
-<h1>All Articles</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Content</th>
-      <th>Category</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
+<table class="table">
 <tbody>
-    <% @all_articles.each do |article| %>
-      <tr>
-        <td><%= article.title %></td>
-        <td><%= article.content %></td>
-        <td><%= article.category %></td>
-      </tr>
-    <% end %>
+  <% @all_articles.each do |article| %>
+    <tr>
+      <td><h4><%= link_to article.title, user_article_path(article.user, article) %></h4></td>
+    </tr>
+  <% end %>
   </tbody>
 </table>
 

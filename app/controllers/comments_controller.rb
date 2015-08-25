@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
 
   def create
     @article = Article.find(params[:article_id])
-    @comment = @article.comments.create!(comment_params)
+    @comment = @article.comments.create!(comment_params.merge(name: current_user.user_name))
     redirect_to user_article_path(@article.user, @article), :notice => "Comment created!"
   end
 

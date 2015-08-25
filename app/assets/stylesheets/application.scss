@@ -1,0 +1,8 @@
+// "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}

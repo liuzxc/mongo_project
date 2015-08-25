@@ -9,7 +9,7 @@ class User
 
   # attr_accessor :password, :password_confirmation
 
-  has_many :articles
+  has_many :articles, dependent: :destroy
 
   has_secure_password
 end

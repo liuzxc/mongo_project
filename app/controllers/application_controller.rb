@@ -19,6 +19,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def validate_user
+    if current_user.id != params[:id]
+      flash[:error] = "非法操作！"
+      redirect_to home_path
+    end
+  end
+
   private
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]

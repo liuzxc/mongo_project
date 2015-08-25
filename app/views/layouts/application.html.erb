@@ -8,16 +8,57 @@
 </head>
 <body>
 
-<% if current_user %>
-  <%= link_to '我的账户', user_path(current_user) %>
-  <%= link_to '首页', home_path %>
-  <%= link_to '退出', log_out_path %>
-<% else %>
-  <%= link_to '登录', log_in_path %>
-  <%= link_to '注册', sign_up_path %>
-<% end %>
+<nav class="navbar navbar-inverse" role="navigation">
+  <div class="container">
 
-<%= yield %>
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      </button>
+      <a class="navbar-brand">Rails MongoDB</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><%= link_to "首页", home_path %></li>
+      </ul>
+        <% if current_user %>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.user_name %><span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "我的账户", edit_user_path(current_user) %></li>
+                <li><%= link_to "我的文章", user_articles_path(current_user) %></li>
+                <li><%= link_to "退出", log_out_path %></li>
+              </ul>
+            </li>
+          </ul>
+        <% else %>
+        <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to "登录", log_in_path %></li>
+          <li><%= link_to "注册", sign_up_path %></li>
+        </ul>
+        <% end %>
+    </div>
+  </div>
+</nav>
+
+<div id="main-container" class="container">
+  <div class="row">
+    <div class="col-xs-1 col-sm-2 col-md-3">
+      <h3>第一部分</h3>
+    </div>
+
+    <div class="col-xs-11 col-sm-10 col-md-9">
+      <h3>第二部分</h3>
+      <%= yield %>
+    </div>
+
+<!--     <div class="col-md-2">
+      <h3>第三部分</h3>
+    </div> -->
+
+  </div>
+</div>
 
 <%= debug(params) if Rails.env.development? %>
 

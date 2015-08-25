@@ -1,24 +1,21 @@
-<p id="notice"><%= notice %></p>
+<table class="table">
 
-<p>
-  <strong>User name:</strong>
-  <%= @user.user_name %>
-</p>
+<tr>
+  <td><strong>用户名</strong></td>
+  <td><%= @user.user_name %></td>
+</tr>
 
-<p>
+<tr>
+  <td><strong>Email</strong></td>
+  <td><%= @user.email %></td>
+</tr>
+
+<!-- <p>
   <strong>Email:</strong>
   <%= @user.email %>
-</p>
+</p> -->
 
-
-<!-- <h2>Articles</h2>
-<% if @user.articles.size > 0 %>
-  <% for article in @user.articles %>
-    <h3><%= article.title %></h3>
-    <p><%= article.content %></p>
-  <% end %>
-<% end %> -->
+</div>
+</table>
 
 <%= link_to '编辑', edit_user_path(@user) %><br>
-
-<%= link_to '我的文章', user_articles_path(@user) %>

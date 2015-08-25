@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -46,3 +46,5 @@ end
 gem 'mongoid', '~> 5.0.0.beta'
 
 gem 'kaminari' #分页插件
+
+gem 'bootstrap-sass', '~> 3.3.5'
