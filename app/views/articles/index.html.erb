@@ -3,14 +3,10 @@
     <% @articles.each do |article| %>
       <tr>
         <td><h3><%= link_to article.title, user_article_path(@user, article) %></h3></td>
-        <td><h3><%= link_to "删除", [@user, article], method: :delete, data: { confirm: 'Are you sure?' } %></h3></td>
+        <td><%= link_to "删除", [@user, article], method: :delete, class: 'btn btn-mini btn-danger', data: { confirm: 'Are you sure?'} %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <%= paginate @articles %>
-
-<br>
-
-<h3><%= link_to '新建', new_user_article_path(@user, @article) %></h3>

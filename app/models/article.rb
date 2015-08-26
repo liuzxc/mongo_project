@@ -9,4 +9,10 @@ class Article
   belongs_to :user
 
   paginates_per 5
+
+
+  def self.search(search_param)
+    any_of({title: /#{search_param}/i}, {content: /#{search_param}/i})
+  end
+
 end

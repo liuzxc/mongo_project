@@ -8,19 +8,26 @@
 </head>
 <body>
 
-<nav class="navbar navbar-inverse" role="navigation">
+<nav class="navbar navbar-default" role="navigation">
   <div class="container">
 
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
       </button>
-      <a class="navbar-brand">Rails MongoDB</a>
+      <a class="navbar-brand">Jason的博客</a>
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><%= link_to "首页", home_path %></li>
+        <li class="active">
+          <%= link_to home_path do %>
+          <span class="glyphicon glyphicon-home"></span> 首页
+          <% end %>
+        </li>
       </ul>
+
+      <%= render 'search/search' %>
+
         <% if current_user %>
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
@@ -44,13 +51,18 @@
 
 <div id="main-container" class="container">
   <div class="row">
-    <div class="col-xs-1 col-sm-2 col-md-3">
-      <!-- <h3>第一部分</h3> -->
-    </div>
+<!--     <div class="col-sm-1 col-md-2">
+      <h3>第一部分</h3>
+    </div> -->
 
-    <div class="col-xs-11 col-sm-10 col-md-9">
+    <div class="col-sm-11 col-md-10">
       <!-- <h3>第二部分</h3> -->
       <%= yield %>
+    </div>
+
+    <div class="col-sm-1 col-md-2">
+      <%= render 'panel/new_article' %>
+    <!-- <h3>第一部分</h3> -->
     </div>
 
   </div>
