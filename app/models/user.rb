@@ -6,7 +6,7 @@ class User
   field :email, type: String
   field :password_digest, type: String
   field :admin, type: Boolean, default: false
-  field :avatar, type: String
+  field :avatar_url, type: String
 
   # attr_accessor :password, :password_confirmation
 

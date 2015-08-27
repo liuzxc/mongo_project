@@ -31,7 +31,7 @@
         <% if current_user %>
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.user_name %><span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= image_tag avatar_url(current_user, 20) %><span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><%= link_to "我的账户", edit_user_path(current_user) %></li>
                 <li><%= link_to "我的文章", user_articles_path(current_user) %></li>
@@ -59,13 +59,14 @@
       <!-- <h3>第二部分</h3> -->
       <%= yield %>
     </div>
-
+    <% if current_user %>
     <div class="col-sm-1 col-md-3">
       <%= render 'panel/new_article' %>
       <%= render 'panel/category' %>
       <%= render 'panel/statistics' %>
     <!-- <h3>第一部分</h3> -->
     </div>
+    <% end %>
 
   </div>
 </div>
