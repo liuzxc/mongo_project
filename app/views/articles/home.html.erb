@@ -1,11 +1,13 @@
-<table class="table">
-<tbody>
-  <% @all_articles.each do |article| %>
-    <tr>
-      <td><h4><%= link_to article.title, user_article_path(article.user, article) %></h4></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
-
-<%= paginate @all_articles %>
+<div class="panel panel-default">
+  <div class="panel-heading"></div>
+  <ul class="list-group">
+    <% @all_articles.each do |article| %>
+      <li class="list-group-item">
+        <h4><%= link_to article.title, user_article_path(article.user, article) %></h4>
+      </li>
+    <% end %>
+  </ul>
+  <div class="panel-footer">
+    <%= paginate @all_articles %>
+  </div>
+</div>

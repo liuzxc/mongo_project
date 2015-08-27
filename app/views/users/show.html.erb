@@ -1,6 +1,11 @@
 <table class="table">
 
 <tr>
+  <td><strong>头像</strong></td>
+  <td><%= image_tag avatar_url(@user) %></td>
+</tr>
+
+<tr>
   <td><strong>用户名</strong></td>
   <td><%= @user.user_name %></td>
 </tr>

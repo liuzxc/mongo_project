@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field form-group">
-    <%= f.label :user_name, class: 'col-sm-2 control-label' %>
+    <%= f.label :user_name, '名字', class: 'col-sm-2 control-label' %>
     <div class="col-sm-5 form-group-sm">
       <%= f.text_field :user_name, class: 'form-control' %>
     </div>
@@ -26,14 +26,14 @@
   </div>
 
   <div class="field form-group">
-    <%= f.label :password, class: 'col-sm-2 control-label' %>
+    <%= f.label :password, '密码', class: 'col-sm-2 control-label' %>
     <div class="col-sm-5">
       <%= f.text_field :password, class: 'form-control' %>
     </div>
   </div>
 
   <div class="field form-group">
-    <%= f.label :password_confirmation, class: 'col-sm-2 control-label' %>
+    <%= f.label :password_confirmation, '确认密码', class: 'col-sm-2 control-label' %>
     <div class="col-sm-5">
       <%= f.text_field :password_confirmation, class: 'form-control' %>
     </div>

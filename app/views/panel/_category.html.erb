@@ -1,0 +1,11 @@
+<div class="panel panel-default">
+  <div class="panel-heading">分类</div>
+  <ul class="list-group">
+    <% Article::CATEGORY.each do |c| %>
+      <li class="list-group-item">
+        <%= link_to c, home_path(category: c) %>
+        <span class="badge"><%= Article.number(c) %></span>
+      </li>
+    <% end %>
+  </ul>
+</div>

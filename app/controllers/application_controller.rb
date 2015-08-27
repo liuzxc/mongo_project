@@ -20,7 +20,9 @@ class ApplicationController < ActionController::Base
   end
 
   def validate_user
-    if current_user.id != params[:id]
+    Rails::logger.info("test----------#{params[:user_id]} and #{current_user.id.class} and #{current_user.id.to_s != params[:user_id]}")
+    if current_user.id.to_s != params[:user_id]
+      Rails::logger.info("----------非法操作")
       flash[:error] = "非法操作！"
       redirect_to home_path
     end

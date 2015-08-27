@@ -45,6 +45,12 @@ end
 
 gem 'mongoid', '~> 5.0.0.beta'
 
-gem 'kaminari' #分页插件
+#分页插件
+gem 'kaminari'
 
 gem 'bootstrap-sass', '~> 3.3.5'
+
+#markdown 解析器
+gem 'redcarpet'
+#代码高亮
+gem 'coderay'

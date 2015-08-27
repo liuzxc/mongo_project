@@ -1,6 +1,8 @@
-<div class="panel panel-success">
+<div class="panel panel-default">
   <!-- <div class="panel-heading">Panel heading without title</div> -->
   <div class="panel-body text-center">
-  <%= link_to "新建文章", new_user_article_path(current_user), class: 'text-center'%>
+  <%= link_to new_user_article_path(current_user), class: 'btn btn-success' do%>
+    <span class="glyphicon glyphicon-pencil"><strong>新建文章</strong></span>
+  <% end %>
 </div>
 </div>

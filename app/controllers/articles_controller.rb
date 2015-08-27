@@ -12,6 +12,8 @@ class ArticlesController < ApplicationController
   def home
     if params[:search]
       @all_articles = Article.search(params[:search]).page params[:page]
+    elsif params[:category]
+      @all_articles = Article.where(category: params[:category]).page params[:page]
     else
       @all_articles = Article.all.page params[:page]
     end
