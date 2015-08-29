@@ -18,19 +18,7 @@
 </div>
 
 <% if @article.comments.size > 0 %>
-  <div class="panel panel-default">
-    <div class="panel-heading">评论</div>
-
-    <% for comment in @article.comments %>
-      <ul class="list-group">
-        <li class="list-group-item">
-          <p class="text-info"><strong><%= comment.name %></strong></p>
-          <%= comment.content %>
-        </li>
-      </ul>
-    <% end %>
-
-  </div>
+  <%= render 'comments/show', object: @article %>
 <% end %>
 
 

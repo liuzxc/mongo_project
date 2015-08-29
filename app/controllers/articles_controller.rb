@@ -15,7 +15,7 @@ class ArticlesController < ApplicationController
     elsif params[:category]
       @all_articles = Article.where(category: params[:category]).page params[:page]
     else
-      @all_articles = Article.all.page params[:page]
+      @all_articles = Article.all.desc.page params[:page]
     end
   end
 

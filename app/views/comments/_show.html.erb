@@ -1,0 +1,26 @@
+<div class="panel panel-default">
+  <div class="panel-heading">评论</div>
+
+  <% @article.comments.each_with_index do |comment, index| %>
+    <ul class="list-group">
+      <li class="list-group-item">
+        <div class="media media-middle">
+        <span class="media-left">
+          <%= image_tag avatar_url(comment.article.user, 40) %>
+        </span>
+
+        <div class="media-body">
+          <h6 class="media-heading"><%= link_to comment.name, user_path(User.find_by(user_name: comment.name)) %> / <%= "#{index + 1}楼" %>
+            <% if User.find_by(user_name: comment.name) == current_user %>
+              <%= link_to '编辑', edit_article_comment_path(comment.article, comment) %>
+              <%= link_to '删除', [comment.article, comment], method: :delete %>
+            <% end %>
+          </h6>
+          <%= markdown(comment.content) %>
+        </div>
+
+      </div>
+      </li>
+    </ul>
+  <% end %>
+</div>

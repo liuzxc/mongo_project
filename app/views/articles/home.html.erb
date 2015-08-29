@@ -3,10 +3,23 @@
   <ul class="list-group">
     <% @all_articles.each do |article| %>
       <li class="list-group-item">
-        <h4>
-        <%= image_tag avatar_url(article.user, 30) %>
-        <%= link_to article.title, user_article_path(article.user, article) %>
-      </h4>
+        <div class="media">
+          <span class="media-left">
+            <%= image_tag avatar_url(article.user, 40) %>
+          </span>
+
+          <div class="media-body">
+            <h4 class="media-heading"><%= link_to article.title, user_article_path(article.user, article) %></h4>
+            <h6><%= link_to article.user.user_name, user_path(article.user), class: "text-muted" %> /
+                <%= link_to article.category, home_path(category: article.category), class: "text-muted" %></h6>
+          </div>
+
+          <% if article.comments.count.to_i != 0 %>
+            <div class="media-right">
+              <span class="badge"><%= article.comments.count.to_i %></span>
+            </div>
+          <% end %>
+        </div>
       </li>
     <% end %>
   </ul>

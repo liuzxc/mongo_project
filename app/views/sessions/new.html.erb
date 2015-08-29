@@ -1,3 +1,7 @@
+<% flash.each do |type, message| %>
+  <p class="text-danger"><%= message %><p>
+<% end %>
+
 <%= form_tag("/sessions", method: 'create', class: 'form-horizontal') do %>
 <div class="input-group">
   <div class="field form-group">
