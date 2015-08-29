@@ -5,15 +5,22 @@
   <div class="panel-body">
     <p><%= markdown(@article.content) %></p>
   </div>
-  <div class="panel-footer text-right">
-  <% if current_user == @article.user %>
-    <%= link_to edit_user_article_path(@user, @article) do %>
-      <span class="glyphicon glyphicon-pencil"></span>
-    <% end %> |
-    <%= link_to [@user, @article], method: :delete, data: { confirm: 'Are you sure?' } do %>
-      <span class="glyphicon glyphicon-trash"></span>
+  <div class="panel-footer inline-block">
+    <div class="text-left">
+      <%= link_to favorite_article_path(@article) do %>
+        <span class="glyphicon glyphicon-bookmark"></span>
+      <% end %>
+    </div>
+    <div class="text-right">
+    <% if current_user == @article.user %>
+      <%= link_to edit_user_article_path(@user, @article) do %>
+        <span class="glyphicon glyphicon-pencil"></span>
+      <% end %> |
+      <%= link_to [@user, @article], method: :delete, data: { confirm: 'Are you sure?' } do %>
+        <span class="glyphicon glyphicon-trash"></span>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
   </div>
 </div>
 

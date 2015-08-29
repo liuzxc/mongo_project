@@ -16,6 +16,7 @@ class User
   validates :password,  length: { minimum: 6,  too_short: "密码长度不少于%{count}个字符" }
 
   has_many :articles, dependent: :destroy
+  has_many :favorites
 
   has_secure_password
 end

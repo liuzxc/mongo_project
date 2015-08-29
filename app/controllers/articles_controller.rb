@@ -79,6 +79,13 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def favorite
+    Rails::logger.info("－－－－－－－－－－#{params}－－－－－－－－－－－－－－－")
+    @article = Article.find(params[:id])
+    @article.favorites.create(user_id: current_user.id)
+    redirect_to :back
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_article
