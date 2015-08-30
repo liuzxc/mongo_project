@@ -1,3 +1,7 @@
+<% flash.each do |type, message| %>
+  <p class="text-danger"><%= message %><p>
+<% end %>
+
 <div class="panel panel-default">
   <div class="panel-heading">
     <h4><p class="text-center"><%= @article.title %></p></h4>
@@ -5,22 +9,23 @@
   <div class="panel-body">
     <p><%= markdown(@article.content) %></p>
   </div>
-  <div class="panel-footer inline-block">
-    <div class="text-left">
-      <%= link_to favorite_article_path(@article) do %>
-        <span class="glyphicon glyphicon-bookmark"></span>
-      <% end %>
+  <div class="panel-footer" id="favorite">
+    <div>
+      <%= render 'favorite_link' %>
     </div>
-    <div class="text-right">
+<!--     <div id="favorite">
+
+</div> -->
+    <!-- <div class="text-right"> -->
     <% if current_user == @article.user %>
-      <%= link_to edit_user_article_path(@user, @article) do %>
+      |<%= link_to edit_user_article_path(@user, @article) do %>
         <span class="glyphicon glyphicon-pencil"></span>
       <% end %> |
       <%= link_to [@user, @article], method: :delete, data: { confirm: 'Are you sure?' } do %>
         <span class="glyphicon glyphicon-trash"></span>
       <% end %>
     <% end %>
-  </div>
+    <!-- </div> -->
   </div>
 </div>
 
@@ -37,3 +42,6 @@
   </div>
   <p><%= f.submit '发表', class: "btn btn-primary" %></p>
 <% end %>
+
+
+

@@ -9,13 +9,14 @@ Rails.application.routes.draw do
   resources :sessions
 
   resources :users do
+    get  :favorites
     resources :articles
   end
 
   resources :articles, only: [] do
     resources :comments
     member do
-      get :favorite
+      post :favorite
       delete :unfavorite
     end
   end

@@ -59,12 +59,12 @@
       <h3>第一部分</h3>
     </div> -->
 
-    <div class="col-sm-11 col-md-9">
+    <div class="col-md-9">
       <!-- <h3>第二部分</h3> -->
       <%= yield %>
     </div>
     <% if current_user %>
-    <div class="col-sm-1 col-md-3">
+    <div class="col-md-3">
       <%= render 'panel/user_info' %>
       <%= render 'panel/new_article' %>
       <%= render 'panel/category' %>
