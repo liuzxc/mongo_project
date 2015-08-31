@@ -62,10 +62,20 @@ class UsersController < ApplicationController
     end
   end
 
+  def favorites
+    @articles = Article.where(:_id.in => current_user.favorites.pluck(:article_id))
+    Rails::logger.info("------------#{@articles.count}----------------")
+    respond_to do |format|
+      format.html { render 'favorites' }
+      format.js
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
+      @articles = @user.articles
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

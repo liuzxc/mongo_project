@@ -6,3 +6,11 @@
     float: none;
     margin: 0 auto;
 }
+
+.borderless li, div {
+    border: none;
+}
+
+.favorite_color {
+  color: green;
+}

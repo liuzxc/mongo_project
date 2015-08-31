@@ -1,3 +1,7 @@
+<% flash.each do |type, message| %>
+  <p class="text-danger"><%= message %><p>
+<% end %>
+
 <div class="panel panel-default">
   <div class="panel-heading">
     <h4><p class="text-center"><%= @article.title %></p></h4>
@@ -5,15 +9,22 @@
   <div class="panel-body">
     <p><%= markdown(@article.content) %></p>
   </div>
-  <div class="panel-footer text-right">
-  <% if current_user == @article.user %>
-    <%= link_to edit_user_article_path(@user, @article) do %>
-      <span class="glyphicon glyphicon-pencil"></span>
-    <% end %> |
-    <%= link_to [@user, @article], method: :delete, data: { confirm: 'Are you sure?' } do %>
-      <span class="glyphicon glyphicon-trash"></span>
+  <div class="panel-footer" >
+    <!-- <div class="container"> -->
+    <div class="row">
+    <div id="favorite" class="col-md-6 text-left"><%= render 'favorite_link' %></div>
+    <div class="col-md-6 text-right">
+    <% if current_user == @article.user %>
+      <%= link_to edit_user_article_path(@user, @article) do %>
+        <span class="glyphicon glyphicon-pencil"></span>
+      <% end %> |
+      <%= link_to [@user, @article], method: :delete, data: { confirm: 'Are you sure?' } do %>
+        <span class="glyphicon glyphicon-trash"></span>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
+<!-- </div> -->
+</div>
   </div>
 </div>
 
@@ -21,12 +32,7 @@
   <%= render 'comments/show', object: @article %>
 <% end %>
 
+<%= render 'comments/form' %>
 
-<%= form_for([@article, Comment.new], html: {class: 'form-horizontal'}) do |f| %>
-  <div class="field form-group">
-    <div class="col-sm-5 form-group-sm">
-      <%= f.text_area :content, rows: 5, placeholder: '说点什么...', class: 'form-control' %>
-    </div>
-  </div>
-  <p><%= f.submit '发表', class: "btn btn-primary" %></p>
-<% end %>
+
+

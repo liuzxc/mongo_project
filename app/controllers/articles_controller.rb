@@ -7,6 +7,10 @@ class ArticlesController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @articles = @user.articles.page params[:page]
+    respond_to do |format|
+      format.html { render :index }
+      format.js
+    end
   end
 
   def home
@@ -78,6 +82,31 @@ class ArticlesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def favorite
+    Rails::logger.info("－－－－－－－－－－#{params}－－－－－－－－－－－－－－－")
+      @article = Article.find(params[:id])
+      @article.favorites.create(user_id: current_user.id)
+       respond_to do |format|
+      format.js
+    end
+      # render :favorite
+  end
+
+  def unfavorite
+    @article = Article.find(params[:id])
+    favorite = Favorite.where(user_id: current_user.id, article_id: @article.id).first
+    favorite.destroy
+    render :favorite
+    # redirect_to :back
+    # respond_to do |format|
+    #   format.html { render 'favorite'}
+    #   format.js
+    # end
+    # render partial: 'favorite'
+  end
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

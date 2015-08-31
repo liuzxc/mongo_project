@@ -8,14 +8,11 @@ class Article
 
   embeds_many :comments
   belongs_to :user
+  has_many :favorites
 
   paginates_per 10
 
-  CATEGORY = %w(
-                技术文章
-                日记
-                随便写写
-                )
+  CATEGORY = %w(技术文章 日记 随便写写)
 
 
   def self.search(search_param)

@@ -1,0 +1,13 @@
+<% if not Favorite.where(user_id: current_user.id, article_id: @article.id).first %>
+  <%= link_to favorite_article_path(@article, format: "js"), {id: @article.id, method: :post, remote: true} do %>
+    <span class="glyphicon glyphicon-bookmark"></span>
+  <% end %>
+<% else %>
+  <%= link_to unfavorite_article_path(@article), method: :delete, remote: true do %>
+    <span class="glyphicon glyphicon-bookmark favorite_color"></span>
+  <% end %>
+<% end %>
+
+<!-- <div id="favorite">
+
+</div> -->
