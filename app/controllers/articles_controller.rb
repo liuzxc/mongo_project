@@ -87,16 +87,17 @@ class ArticlesController < ApplicationController
     Rails::logger.info("－－－－－－－－－－#{params}－－－－－－－－－－－－－－－")
       @article = Article.find(params[:id])
       @article.favorites.create(user_id: current_user.id)
-      render :favorite
+       respond_to do |format|
+      format.js
+    end
+      # render :favorite
   end
 
   def unfavorite
     @article = Article.find(params[:id])
     favorite = Favorite.where(user_id: current_user.id, article_id: @article.id).first
     favorite.destroy
-    respond_to do |format|
-      format.js {render :favorite}
-    end
+    render :favorite
     # redirect_to :back
     # respond_to do |format|
     #   format.html { render 'favorite'}
