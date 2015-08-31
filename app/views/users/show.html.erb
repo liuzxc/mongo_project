@@ -18,6 +18,9 @@
     <li role="presentation">
       <%= link_to '我的收藏', user_favorites_path(@user), remote: true %>
     </li>
+    <li role="presentation">
+      <%= link_to '赞过的文章', user_likes_path(@user), remote: true %>
+    </li>
   </ul>
 
   <div class="tab-content" id="my_articles">

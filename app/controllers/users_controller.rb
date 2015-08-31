@@ -64,11 +64,13 @@ class UsersController < ApplicationController
 
   def favorites
     @articles = Article.where(:_id.in => current_user.favorites.pluck(:article_id))
-    Rails::logger.info("------------#{@articles.count}----------------")
-    respond_to do |format|
-      format.html { render 'favorites' }
-      format.js
-    end
+    render 'favorites'
+  end
+
+  def likes
+    @user = User.find(params[:user_id])
+    @articles = Article.where(:_id.in => @user.likes.pluck(:article_id))
+    render 'favorites'
   end
 
   private

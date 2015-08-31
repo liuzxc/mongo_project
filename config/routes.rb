@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   resources :sessions
 
   resources :users do
-    get  :favorites
+    get :favorites
+    get :likes
     resources :articles
   end
 
