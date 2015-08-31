@@ -6,31 +6,32 @@
   <div class="panel-heading">
     <h4><p class="text-center"><%= @article.title %></p></h4>
   </div>
+
   <div class="panel-body">
     <p><%= markdown(@article.content) %></p>
   </div>
+
   <div class="panel-footer" >
-    <!-- <div class="container"> -->
     <div class="row">
-    <div id="favorite" class="col-md-6 text-left"><%= render 'favorite_link' %></div>
-    <div class="col-md-6 text-right">
-    <% if current_user == @article.user %>
-      <%= link_to edit_user_article_path(@user, @article) do %>
-        <span class="glyphicon glyphicon-pencil"></span>
-      <% end %> |
-      <%= link_to [@user, @article], method: :delete, data: { confirm: 'Are you sure?' } do %>
-        <span class="glyphicon glyphicon-trash"></span>
-      <% end %>
-    <% end %>
+
+      <div id="favorite" class="col-md-6 text-left">
+        <%= render 'favorite_link' %>
+      </div>
+
+      <div class="col-md-6 text-right">
+        <%= render 'edit_delete' %>
+      </div>
+
+    </div>
   </div>
-<!-- </div> -->
-</div>
-  </div>
+
 </div>
 
-<% if @article.comments.size > 0 %>
-  <%= render 'comments/show', object: @article %>
-<% end %>
+<div id="comment">
+  <% if @article.comments.size > 0 %>
+    <%= render 'comments/show', object: @article %>
+  <% end %>
+</div>
 
 <%= render 'comments/form' %>
 
