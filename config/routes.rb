@@ -15,11 +15,10 @@ Rails.application.routes.draw do
 
   resources :articles, only: [] do
     resources :comments
-    member do
-      post :favorite
-      delete :unfavorite
-    end
   end
+
+  resources :favorites, only: [:create, :destroy]
+  resources :likes, only: [:create, :destroy]
 
   # resources :articles
   # The priority is based upon order of creation: first created -> highest priority.

@@ -6,13 +6,11 @@ class CommentsController < ApplicationController
   # end
 
   def edit
-    @comment
   end
 
   def create
     @article = Article.find(params[:article_id])
     @comment = @article.comments.create!(comment_params.merge(name: current_user.user_name))
-    # redirect_to user_article_path(@article.user, @article), :notice => "Comment created!"
     render :show
   end
 
@@ -27,7 +25,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to user_article_path(@article.user, @article), notice: 'User was successfully destroyed.' }
+      format.html { redirect_to user_article_path(@article.user, @article), notice: 'comment was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

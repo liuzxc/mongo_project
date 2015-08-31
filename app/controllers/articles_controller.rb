@@ -87,10 +87,7 @@ class ArticlesController < ApplicationController
     Rails::logger.info("－－－－－－－－－－#{params}－－－－－－－－－－－－－－－")
       @article = Article.find(params[:id])
       @article.favorites.create(user_id: current_user.id)
-       respond_to do |format|
-      format.js
-    end
-      # render :favorite
+      render :favorite
   end
 
   def unfavorite
@@ -98,15 +95,17 @@ class ArticlesController < ApplicationController
     favorite = Favorite.where(user_id: current_user.id, article_id: @article.id).first
     favorite.destroy
     render :favorite
-    # redirect_to :back
-    # respond_to do |format|
-    #   format.html { render 'favorite'}
-    #   format.js
-    # end
-    # render partial: 'favorite'
   end
 
+  def like
+    @article = Article.find(params[:id])
+    @article.incr(like: 1)
+  end
 
+  def unlike
+    @article = Article.find(params[:id])
+    @article.incr(like: -1)
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

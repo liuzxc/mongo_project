@@ -1,0 +1,9 @@
+<% if like = current_user.likes.where(article_id: @article.id).first %>
+  <%= link_to like_path(like), method: :delete, remote: true do %>
+    <span class="glyphicon glyphicon-heart like_color"></span> <%= @article.likes.count.to_i %>
+  <% end %>
+<% else %>
+  <%= link_to likes_path(article_id: @article.id), method: :post, remote: true do %>
+    <span class="glyphicon glyphicon-heart"></span> <%= @article.likes.count.to_i %>
+  <% end %>
+<% end %>

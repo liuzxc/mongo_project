@@ -3,12 +3,14 @@ class Article
   field :title, type: String
   field :content, type: String
   field :category, type: String, default: 'diary'
+  field :like, type: Integer, default: 0
 
   validates :title, presence: true
 
   embeds_many :comments
   belongs_to :user
   has_many :favorites
+  has_many :likes
 
   paginates_per 10
 

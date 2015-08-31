@@ -17,6 +17,7 @@ class User
 
   has_many :articles, dependent: :destroy
   has_many :favorites
+  has_many :likes
 
   has_secure_password
 end
