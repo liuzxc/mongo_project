@@ -7,6 +7,8 @@ class User
   field :password_digest, type: String
   field :admin, type: Boolean, default: false
   field :avatar_url, type: String
+  field :location, type: String, default: 'Chengdu'
+  field :created_at, type: Time, default: Time.now
 
   validates :user_name, :email, presence: true
   validates :user_name, uniqueness: {message: "该用户名已经被占用"}

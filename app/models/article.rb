@@ -4,6 +4,8 @@ class Article
   field :content, type: String
   field :category, type: String, default: 'diary'
   field :like, type: Integer, default: 0
+  field :created_at, type: Time, default: Time.now
+  field :updated_at, type: Time, default: Time.now
 
   validates :title, presence: true
 
@@ -11,6 +13,8 @@ class Article
   belongs_to :user
   has_many :favorites
   has_many :likes
+
+  default_scope ->{order_by(updated_at: 'desc')}
 
   paginates_per 10
 

@@ -7,8 +7,13 @@
     margin: 0 auto;
 }
 
-.borderless li, div {
-    border: none;
+li.borderless {
+    border-top: none;
+}
+
+.borderless li {
+    border-left: none;
+    border-right: none;
 }
 
 .favorite_color {
@@ -22,4 +27,8 @@
 .badge_color {
   color: white;
   background-color: #269abc;
+}
+
+.table-condensed>tbody>tr>td {
+    padding: 0px;
 }

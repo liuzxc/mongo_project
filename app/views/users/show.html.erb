@@ -1,13 +1,14 @@
 <div class="row">
-<ul class="list-group col-md-3">
-  <li class="list-group-item">
-    <p class="text-left"><%= image_tag avatar_url(@user, 150) %></p>
-    <p><h3><%= @user.user_name %></h3></p>
+<ul class="list-group borderless col-md-3">
+  <li class="list-group-item borderless">
+    <p class="text-left"><%= image_tag avatar_url(@user, 180) %></p>
+    <h3><%= @user.user_name %></h3>
   </li>
   <li class="list-group-item">
-    <%= @user.email %>
+    <p><i class="glyphicon glyphicon-envelope"></i> <%= @user.email %></p>
+    <p><i class="glyphicon glyphicon-map-marker"></i> <%= @user.location %></p>
+    <i class="glyphicon glyphicon-time"></i> <%= @user.created_at.strftime("Joined on %m/%d/%Y") %>
   </li>
-  <li class="list-group-item"><%= @user.email %></li>
 </ul>
 
 <div class="col-md-9">
@@ -24,6 +25,7 @@
   </ul>
 
   <div class="tab-content" id="my_articles">
+    <%= render 'index/my_articles' %>
   </div>
 
 </div>
