@@ -54,3 +54,5 @@ gem 'bootstrap-sass', '~> 3.3.5'
 gem 'redcarpet'
 #代码高亮
 gem 'coderay'
+
+gem 'rest-client'

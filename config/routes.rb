@@ -8,6 +8,9 @@ Rails.application.routes.draw do
 
   resources :sessions
 
+  get '/github' => 'github#index'
+  get '/github/callback' => 'github#callback'
+
   resources :users do
     get :favorites
     get :likes
