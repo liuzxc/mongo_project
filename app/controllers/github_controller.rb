@@ -30,6 +30,7 @@ class GithubController < ApplicationController
       end
 
       auth_result = JSON.parse(auth_result)
+      Rails::logger.info("-----------auth_result#{auth_result}------------")
 
       user = User.find_by(github_id: auth_result["id"])
       if not user
