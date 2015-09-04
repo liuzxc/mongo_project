@@ -61,7 +61,7 @@ module ApplicationHelper
       user.save
     end
 
-    if user.github_id
+    if user.github_id or user.stack_id
       user.avatar_url + "&s=#{size}"
     else
       user.avatar_url + "?s=#{size}"

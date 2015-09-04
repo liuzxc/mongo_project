@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   get '/github' => 'github#index'
   get '/github/callback' => 'github#callback'
 
+  get '/stackoverflow' => 'stackoverflow#index'
+  get '/stackoverflow/callback' => 'stackoverflow#callback'
+
   resources :users do
     get :favorites
     get :likes
