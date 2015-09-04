@@ -32,3 +32,8 @@ li.borderless {
 .table-condensed>tbody>tr>td {
     padding: 0px;
 }
+
+html.turbolinks-progress-bar::before {
+  background-color: red !important;
+  height: 3px !important;
+}
