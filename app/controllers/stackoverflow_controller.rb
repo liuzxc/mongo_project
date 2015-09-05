@@ -1,5 +1,5 @@
-# require 'openssl'
-# OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
+require 'openssl'
+OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 class StackoverflowController < ApplicationController
 
   CLIENT_ID = ENV['SOF_BASIC_CLIENT_ID']
