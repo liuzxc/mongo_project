@@ -3,8 +3,13 @@
 <% end %>
 
 <div class="panel panel-default">
-  <div class="panel-heading">
-    <h4><p class="text-center"><%= @article.title %></p></h4>
+  <div class="panel-heading" style="background-color:white">
+    <h3><p class="text-left"><strong><%= @article.title %></strong></p></h3>
+    <p><h6>
+      <%= "阅读#{@article.view_count}" %>
+      <%= "喜欢#{@article.likes.count.to_i}" %>
+      <%= "评论#{@article.comments.count}" %>
+    </h6></p>
   </div>
 
   <div class="panel-body">
@@ -30,6 +35,10 @@
   </div>
 
 </div>
+
+<!-- <div class="well" style="background-color:white">
+  <%= render 'panel/author', object: @article %>
+</div> -->
 
 <div id="comment">
     <%= render 'comments/show' %>

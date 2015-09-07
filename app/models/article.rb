@@ -3,9 +3,10 @@ class Article
   field :title, type: String
   field :content, type: String
   field :category, type: String, default: 'diary'
-  field :like, type: Integer, default: 0
+  # field :like, type: Integer, default: 0
   field :created_at, type: Time, default: Time.now
   field :updated_at, type: Time, default: Time.now
+  field :view_count, type: Integer, default: 0
 
   validates :title, presence: true
 

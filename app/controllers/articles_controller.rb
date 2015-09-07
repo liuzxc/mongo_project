@@ -27,6 +27,7 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.json
   def show
+    @article.inc(view_count: 1)
   end
 
   # GET /articles/new
@@ -96,16 +97,6 @@ class ArticlesController < ApplicationController
     favorite = Favorite.where(user_id: current_user.id, article_id: @article.id).first
     favorite.destroy
     render :favorite
-  end
-
-  def like
-    @article = Article.find(params[:id])
-    @article.incr(like: 1)
-  end
-
-  def unlike
-    @article = Article.find(params[:id])
-    @article.incr(like: -1)
   end
 
   private

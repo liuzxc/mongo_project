@@ -1,0 +1,15 @@
+<div class="media">
+  <div class="media-left">
+    <%= image_tag avatar_url(@article.user, 40), class: "center-block img-circle" %>
+  </div>
+  <div class="media-body">
+    <h5 class="media-heading">
+      作者<%= link_to @article.user.user_name, user_path(@article.user) %>
+    </h5>
+  </div>
+    <div class="media-right">
+  <%= link_to new_user_article_path(current_user), class: 'btn btn-success img-rounded' do%>
+    <span class="glyphicon glyphicon-plus"><strong>添加关注</strong></span>
+  <% end %>
+  </div>
+</div>
