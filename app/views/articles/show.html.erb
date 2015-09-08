@@ -6,6 +6,7 @@
   <div class="panel-heading" style="background-color:white">
     <h3><p class="text-left"><strong><%= @article.title %></strong></p></h3>
     <p><h6>
+      <%= "作者#{@article.user.user_name}发表于#{@article.created_at.to_formatted_s(:db)}" %>
       <%= "阅读#{@article.view_count}" %>
       <%= "喜欢#{@article.likes.count.to_i}" %>
       <%= "评论#{@article.comments.count}" %>

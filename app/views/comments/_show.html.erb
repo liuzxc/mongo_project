@@ -1,5 +1,7 @@
 <div class="panel panel-default">
-  <div class="panel-heading">评论</div>
+  <div class="panel-heading">
+    <%= "共 #{@article.comments.count} 条评论" %>
+  </div>
 
   <% @article.comments.each_with_index do |comment, index| %>
     <ul class="list-group">
