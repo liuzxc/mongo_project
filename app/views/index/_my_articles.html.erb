@@ -1,9 +1,13 @@
 <div class="panel panel-default">
   <ul class="list-group">
     <% @articles.each do |article| %>
-      <li class="list-group-item">
-        <%= link_to article.title, user_article_path(article.user, article) %>
-      </li>
+      <% if article.deleted_at %>
+        <li class="list-group-item"><del><%= "#{article.title}" %></del></li>
+      <% else %>
+        <li class="list-group-item">
+          <%= link_to article.title, user_article_path(article.user, article) %>
+        </li>
+      <% end %>
     <% end %>
   </ul>
 

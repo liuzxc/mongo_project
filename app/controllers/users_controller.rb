@@ -63,13 +63,13 @@ class UsersController < ApplicationController
   end
 
   def favorites
-    @articles = Article.where(:_id.in => current_user.favorites.pluck(:article_id))
+    @articles = Article.unscoped.where(:_id.in => current_user.favorites.pluck(:article_id))
     render 'favorites'
   end
 
   def likes
     @user = User.find(params[:user_id])
-    @articles = Article.where(:_id.in => @user.likes.pluck(:article_id))
+    @articles = Article.unscoped.where(:_id.in => @user.likes.pluck(:article_id))
     render 'favorites'
   end
 

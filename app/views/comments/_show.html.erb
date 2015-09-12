@@ -3,16 +3,19 @@
     <%= "共 #{@article.comments.count} 条评论" %>
   </div>
 
-  <% @article.comments.each_with_index do |comment, index| %>
+  <% @article.comments.unscoped.each_with_index do |comment, index| %>
     <ul class="list-group">
       <li class="list-group-item">
+      <% if comment.deleted_at %>
+        <h6 class="text-center">抱歉，此条评论已被作者删除</h6>
+      <% else %>
         <div class="media media-middle">
         <span class="media-left">
           <%= image_tag avatar_url(comment.article.user, 40) %>
         </span>
 
         <div class="media-body">
-          <h6 class="media-heading"><%= link_to comment.name, user_path(User.find_by(user_name: comment.name)) %> / <%= "#{index + 1}楼" %>
+          <h6 class="media-heading"><%= link_to comment.name, user_path(User.find_by(user_name: comment.name)) %> / <%= "#{comment.floor}楼" %>
             <% if User.find_by(user_name: comment.name) == current_user %>
               <%= link_to '编辑', edit_article_comment_path(comment.article, comment) %>
               <%= link_to '删除', [comment.article, comment], method: :delete %>
@@ -20,8 +23,8 @@
           </h6>
           <%= markdown(comment.content) %>
         </div>
-
       </div>
+      <% end %>
       </li>
     </ul>
   <% end %>

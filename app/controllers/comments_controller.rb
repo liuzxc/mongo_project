@@ -10,7 +10,8 @@ class CommentsController < ApplicationController
 
   def create
     @article = Article.find(params[:article_id])
-    @comment = @article.comments.create!(comment_params.merge(name: current_user.user_name))
+    @comment = @article.comments.create!(comment_params.merge(name: current_user.user_name,
+                                                              floor: @article.comments.unscoped.count + 1))
     render :show
   end
 
@@ -23,7 +24,8 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment.destroy
+    Rails::logger.info("----------软删除－－－－－－－－－－")
+    @comment.soft_destroy
     respond_to do |format|
       format.html { redirect_to user_article_path(@article.user, @article), notice: 'comment was successfully destroyed.' }
       format.json { head :no_content }
