@@ -15,7 +15,7 @@
 
   <div class="panel-body">
     <p><%= markdown(@article.content) %></p>
-    <wb:share-button appkey="666151430" addition="simple" type="button"></wb:share-button>
+    <wb:share-button addition="simple" type="icon" ralateUid="2695278453" default_text="<%= @article.title %>" url="<%= request.original_url %>"></wb:share-button>
   </div>
 
   <div class="panel-footer" >
