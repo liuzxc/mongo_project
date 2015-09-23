@@ -14,6 +14,19 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def autocomplete
+    @articles = Article.find_by(id: params[:article_id])
+    @commentor_names = @articles.comments.map{|e| "@" + e.name}.uniq
+                                         .map{|e| e if e.match(/^#{params[:term]}/i) }.compact
+    logger.info("-----------hahahahha::::#{@commentor_names}")
+    respond_to do |format|
+      format.html
+      format.json {
+        render json: @commentor_names
+      }
+    end
+  end
+
   def home
     if params[:search]
       @all_articles = Article.search(params[:search]).page params[:page]

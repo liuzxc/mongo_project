@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 
   resources :articles, only: [] do
     resources :comments
+    get :autocomplete
   end
 
   resources :favorites, only: [:create, :destroy]

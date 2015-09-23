@@ -1,9 +1,13 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
 
-  # def show
-
-  # end
+  def show
+    @commentor_names = @article.comments.map(&:name).uniq
+    respond_to do |format|
+      format.html
+      format.json { render :json => @article }
+    end
+  end
 
   def edit
   end

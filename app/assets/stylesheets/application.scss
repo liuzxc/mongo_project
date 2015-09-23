@@ -1,6 +1,8 @@
 // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import 'jquery-ui/autocomplete';
+@import 'jquery-ui/theme';
 
 .col-centered{
     float: none;

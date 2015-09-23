@@ -11,9 +11,9 @@
     </div>
   <% end %>
 
-  <div class="form-group">
+  <div class="form-group ui-widget">
     <div class="col-sm-5">
-      <%= f.text_area :content, rows: 5, placeholder: '说点什么...', class: 'form-control' %>
+      <%= f.text_area :content, rows: 5, placeholder: '说点什么...', class: 'form-control', id: "tags", 'data-article-id': @article.id.to_s %>
     </div>
   </div>
 
