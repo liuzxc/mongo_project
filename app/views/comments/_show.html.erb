@@ -21,7 +21,8 @@
               <%= link_to '删除', [comment.article, comment], method: :delete %>
             <% end %>
           </h6>
-          <%= markdown(comment.content) %>
+          <!-- <%= markdown(comment.content) %> -->
+          <p id="comment"><%= comment.content %></p>
         </div>
       </div>
       <% end %>

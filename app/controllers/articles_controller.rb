@@ -16,8 +16,9 @@ class ArticlesController < ApplicationController
 
   def autocomplete
     @articles = Article.find_by(id: params[:article_id])
-    @commentor_names = @articles.comments.map{|e| "@" + e.name}.uniq
-                                         .map{|e| e if e.match(/^#{params[:term]}/i) }.compact
+    term = params[:term].split(/@(\w+)$/).last
+    logger.info("-----------term::::#{term}")
+    @commentor_names = @articles.comments.map{|e| e.name if e.name.match(/^#{term}/i) }.compact.uniq
     logger.info("-----------hahahahha::::#{@commentor_names}")
     respond_to do |format|
       format.html
