@@ -5,20 +5,17 @@
 is_empty = ->
   $("#tags").val().replace(/\s/g, '').length == 0
 
-find_at_sign = ->
-  if $("#tags").val().split('').pop() == "@"
-    console.log $("#tags").val().split('')
-    id = $("#tags").data("article-id")
-    $("#tags").autocomplete
-      source:  '/articles/' + id + '/autocomplete.json'
-      minLength: 1
-      focus: (event) ->
-        event.preventDefault()
-      select: (event, ui) ->
-        event.preventDefault()
-        this.value = this.value.replace(/@(\w*)$/, "@" + ui.item.value)
-
 $ ->
-  $(document).on("input", "#tags",
-  -> find_at_sign())
+  $(document).on("input", "#tags", ->
+    content = $("#tags").val()
+    if content[content.length - 1] == "@"
+      id = $("#tags").data("article-id")
+      $("#tags").autocomplete
+        source:  '/articles/' + id + '/autocomplete.json'
+        minLength: 1
+        focus: (event) -> # event在焦点被移动到条目中时被触发，默认的行为是用列表栏中聚焦项目的值取代文本框中的值
+          event.preventDefault() #阻止默认的行为被触发
+        select: (event, ui) ->   #event在列表中的条目被选中时触发，默认的行为是用列表栏中选中项目的值取代文本框中的值
+          event.preventDefault()
+          this.value = this.value.replace(/@(\w*)$/, "@" + ui.item.value))
 
