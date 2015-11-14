@@ -1,26 +1,33 @@
-<table class="table">
+<div class="row">
+<ul class="list-group borderless col-md-3">
+  <li class="list-group-item borderless">
+    <p class="text-left"><%= image_tag avatar_url(@user, 180) %></p>
+    <h3><%= @user.user_name %></h3>
+  </li>
+  <li class="list-group-item">
+    <p><i class="glyphicon glyphicon-envelope"></i> <%= @user.email %></p>
+    <p><i class="glyphicon glyphicon-map-marker"></i> <%= @user.location %></p>
+    <i class="glyphicon glyphicon-time"></i> <%= @user.created_at.strftime("Joined on %m/%d/%Y") %>
+  </li>
+</ul>
 
-<tr>
-  <td><strong>头像</strong></td>
-  <td><%= image_tag avatar_url(@user) %></td>
-</tr>
+<div class="col-md-9">
+  <ul class="nav nav-tabs">
+    <li role="presentation">
+      <%= link_to '我的文章', user_articles_path(@user), remote: true %>
+    </li>
+    <li role="presentation">
+      <%= link_to '我的收藏', user_favorites_path(@user), remote: true %>
+    </li>
+    <li role="presentation">
+      <%= link_to '赞过的文章', user_likes_path(@user), remote: true %>
+    </li>
+  </ul>
 
-<tr>
-  <td><strong>用户名</strong></td>
-  <td><%= @user.user_name %></td>
-</tr>
-
-<tr>
-  <td><strong>Email</strong></td>
-  <td><%= @user.email %></td>
-</tr>
-
-<!-- <p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p> -->
+  <div class="tab-content" id="my_articles">
+    <%= render 'index/my_articles' %>
+  </div>
 
 </div>
-</table>
 
-<%= link_to '编辑', edit_user_path(@user) %><br>
+</div>

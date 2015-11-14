@@ -36,6 +36,12 @@ Rails.application.configure do
   # Raises helpful error messages.
   config.assets.raise_runtime_errors = true
 
+  ENV['GH_BASIC_CLIENT_ID'] = '00afc453888063ee1c48'
+  ENV['GH_BASIC_SECRET_ID'] = 'fe2b6a4057deb58ffd0ffa8299bada9951b79ba0'
+
+  ENV['SOF_BASIC_CLIENT_ID'] = '5496'
+  ENV['SOF_BASIC_SECRET_ID'] = 'JMrrYsGHROjy7ZP6mH62IA(('
+
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 end

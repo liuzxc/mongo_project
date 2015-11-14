@@ -62,14 +62,26 @@ class UsersController < ApplicationController
     end
   end
 
+  def favorites
+    @articles = Article.unscoped.where(:_id.in => current_user.favorites.pluck(:article_id))
+    render 'favorites'
+  end
+
+  def likes
+    @user = User.find(params[:user_id])
+    @articles = Article.unscoped.where(:_id.in => @user.likes.pluck(:article_id))
+    render 'favorites'
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
+      @articles = @user.articles
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:user_name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:user_name, :email, :password, :password_confirmation, :about_me)
     end
 end

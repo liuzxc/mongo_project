@@ -60,7 +60,12 @@ module ApplicationHelper
       user.avatar_url = "http://www.gravatar.com/avatar/#{hash}"
       user.save
     end
-    user.avatar_url + "?s=#{size}"
-end
+
+    if user.github_id or user.stack_id
+      user.avatar_url + "&s=#{size}"
+    else
+      user.avatar_url + "?s=#{size}"
+    end
+  end
 
 end

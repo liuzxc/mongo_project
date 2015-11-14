@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:wb="http://open.weibo.com/wb">
 <head>
   <title>MongoProject</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <!-- <!-- <%= stylesheet_link_tag 'cupertino/jquery-ui-1.8.2.custom' %> -->
   <%= csrf_meta_tags %>
+  <meta property="wb:webmaster" content="d80642ccf9891a61" />
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+<!--    //   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+   // <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script> -->
 </head>
 <body>
 
@@ -31,9 +37,13 @@
         <% if current_user %>
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= image_tag avatar_url(current_user, 20) %><span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <!-- <%= image_tag avatar_url(current_user, 20), class: "img-circle" %> -->
+                <%= current_user.user_name %>
+                <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><%= link_to "我的账户", edit_user_path(current_user) %></li>
+                <li><%= link_to "我的主页", user_path(current_user) %></li>
+                <li><%= link_to "帐号设置", edit_user_path(current_user) %></li>
                 <li><%= link_to "我的文章", user_articles_path(current_user) %></li>
                 <li><%= link_to "退出", log_out_path %></li>
               </ul>
@@ -55,18 +65,23 @@
       <h3>第一部分</h3>
     </div> -->
 
-    <div class="col-sm-11 col-md-9">
+    <div class="col-md-9">
       <!-- <h3>第二部分</h3> -->
       <%= yield %>
     </div>
-    <% if current_user %>
-    <div class="col-sm-1 col-md-3">
-      <%= render 'panel/new_article' %>
-      <%= render 'panel/category' %>
-      <%= render 'panel/statistics' %>
-    <!-- <h3>第一部分</h3> -->
+    <div class="col-md-3">
+      <% if current_user %>
+        <%= render 'panel/user_info' %>
+        <%= render 'panel/new_article' %>
+        <%= render 'panel/category' %>
+        <%= render 'panel/statistics' %>
+      <!-- <h3>第一部分</h3> -->
+
+      <% else %>
+        <%= render 'github/login' %>
+      <% end %>
     </div>
-    <% end %>
+</div>
 
   </div>
 </div>

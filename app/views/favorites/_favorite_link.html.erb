@@ -1,0 +1,9 @@
+<% if favorite = current_user.favorites.where(article_id: @article.id).first %>
+  <%= link_to favorite_path(favorite), method: :delete, remote: true do %>
+    <span class="glyphicon glyphicon-bookmark favorite_color"></span>
+  <% end %>
+<% else %>
+  <%= link_to favorites_path(article_id: @article.id), method: :post, remote: true do %>
+    <span class="glyphicon glyphicon-bookmark"></span>
+  <% end %>
+<% end %>

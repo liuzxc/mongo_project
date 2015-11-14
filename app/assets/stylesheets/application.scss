@@ -1,8 +1,41 @@
 // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import 'jquery-ui/autocomplete';
+@import 'jquery-ui/theme';
 
 .col-centered{
     float: none;
     margin: 0 auto;
+}
+
+li.borderless {
+    border-top: none;
+}
+
+.borderless li {
+    border-left: none;
+    border-right: none;
+}
+
+.favorite_color {
+  color: green;
+}
+
+.like_color {
+  color: red;
+}
+
+.badge_color {
+  color: white;
+  background-color: #269abc;
+}
+
+.table-condensed>tbody>tr>td {
+    padding: 0px;
+}
+
+html.turbolinks-progress-bar::before {
+  background-color: red !important;
+  height: 3px !important;
 }

@@ -1,13 +1,1 @@
-<div class="panel panel-default">
-  <div class="panel-heading"></div>
-  <ul class="list-group">
-    <% @articles.each do |article| %>
-      <li class="list-group-item">
-        <%= link_to article.title, user_article_path(@user, article) %>
-      </li>
-    <% end %>
-  </ul>
-  <div class="panel-footer">
-    <%= paginate @articles %>
-  </div>
-</div>
+<%= render 'index/my_articles' %>

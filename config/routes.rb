@@ -8,13 +8,26 @@ Rails.application.routes.draw do
 
   resources :sessions
 
+  get '/github' => 'github#index'
+  get '/github/callback' => 'github#callback'
+
+  get '/stackoverflow' => 'stackoverflow#index'
+  get '/stackoverflow/callback' => 'stackoverflow#callback'
+
   resources :users do
+    get :favorites
+    get :likes
     resources :articles
   end
 
   resources :articles, only: [] do
     resources :comments
+    get :autocomplete
   end
+
+  resources :favorites, only: [:create, :destroy]
+  resources :likes, only: [:create, :destroy]
+
   # resources :articles
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

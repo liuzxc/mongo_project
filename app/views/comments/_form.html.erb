@@ -1,0 +1,26 @@
+<%= form_for([@article, @comment = Comment.new], remote: true, html: {class: 'form-horizontal'}) do |f| %>
+  <% if @comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+      <ul>
+      <% @comment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group ui-widget">
+    <div class="col-sm-5">
+      <%= f.text_area :content, rows: 5, placeholder: '说点什么...', class: 'form-control', id: "tags", 'data-article-id': @article.id.to_s %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-5">
+      <%= f.submit "发布", class: "btn btn-primary", id: "submit"%>
+    </div>
+  </div>
+
+<% end %>

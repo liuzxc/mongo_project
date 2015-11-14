@@ -4,9 +4,28 @@ class ArticlesController < ApplicationController
 
   # GET /articles
   # GET /articles.json
+
   def index
     @user = User.find(params[:user_id])
     @articles = @user.articles.page params[:page]
+    respond_to do |format|
+      format.html { render :index }
+      format.js
+    end
+  end
+
+  def autocomplete
+    @articles = Article.find_by(id: params[:article_id])
+    term = params[:term].split(/@(\w+)$/).last
+    logger.info("-----------term::::#{term}")
+    @commentor_names = @articles.comments.map{|e| e.name if e.name.match(/^#{term}/i) }.compact.uniq
+    logger.info("-----------hahahahha::::#{@commentor_names}")
+    respond_to do |format|
+      format.html
+      format.json {
+        render json: @commentor_names
+      }
+    end
   end
 
   def home
@@ -22,6 +41,7 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.json
   def show
+    @article.inc(view_count: 1)
   end
 
   # GET /articles/new
@@ -72,11 +92,26 @@ class ArticlesController < ApplicationController
   # DELETE /articles/1.json
   def destroy
     @article = @user.articles.find(params[:id])
-    @article.destroy
+    # @article.destroy
+    @article.soft_destroy
     respond_to do |format|
       format.html { redirect_to user_articles_path, notice: 'Article was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def favorite
+    Rails::logger.info("－－－－－－－－－－#{params}－－－－－－－－－－－－－－－")
+      @article = Article.find(params[:id])
+      @article.favorites.create(user_id: current_user.id)
+      render :favorite
+  end
+
+  def unfavorite
+    @article = Article.find(params[:id])
+    favorite = Favorite.where(user_id: current_user.id, article_id: @article.id).first
+    favorite.destroy
+    render :favorite
   end
 
   private

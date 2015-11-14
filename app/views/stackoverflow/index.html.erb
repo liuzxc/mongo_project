@@ -1,0 +1,13 @@
+<html>
+  <head>
+  </head>
+  <body>
+    <p>
+      Well, hello there!
+    </p>
+    <p>
+      We're going to now talk to the StackOverflow API. Ready?
+      <%= link_to("Click here", "https://stackexchange.com/oauth?scope=private_info,no_expiry,read_inbox&client_id=#{client_id}&redirect_uri=http://rails.example.com:3000/stackoverflow/callback", method: :get, turbolinks: true) %> to begin!
+    </p>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+<p>Hello, <%= local_assigns %>!</p>
+<p>Hello, <%= local_assigns["email"] %>!</p>
+<p>Hello, <%= email %>!</p>
+<p>
+  <% if !local_assigns["email"].nil? && !local_assigns["email"].empty? %> It looks like your public email address is <%= local_assigns["email"] %>.
+  <% else %> It looks like you don't have a public email. That's cool.
+  <% end %>
+</p>
+<p>
+  <% if local_assigns["private_emails"] %>
+  With your permission, we were also able to dig up your private email addresses:
+  <%= local_assigns["private_emails"].map{ |private_email_address| private_email_address["email"] }.join(', ') %>
+  <% else %>
+  Also, you're a bit secretive about your private email addresses.
+  <% end %>
+</p>
