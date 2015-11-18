@@ -56,6 +56,7 @@ module ApplicationHelper
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   def avatar_url(user)
     gravatar_id = Digest::MD5::hexdigest(user.email).downcase
     "http://gravatar.com/avatar/#{gravatar_id}.png"
@@ -63,6 +64,8 @@ module ApplicationHelper
 =======
 =======
 >>>>>>> c9ec5ef... 使用 gravatar 生成用户头像
+=======
+>>>>>>> 60bef676c588b3c186e743e0afdd210e4abf16c2
   def avatar_url(user, size = 200)
     if user.avatar_url.nil?
       hash = Digest::MD5::hexdigest(user.email.downcase)
@@ -72,8 +75,11 @@ module ApplicationHelper
     user.avatar_url + "?s=#{size}"
 end
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> b3b7667... 去掉无用的代码
 =======
 >>>>>>> c9ec5ef... 使用 gravatar 生成用户头像
+=======
+>>>>>>> 60bef676c588b3c186e743e0afdd210e4abf16c2
 
 end
