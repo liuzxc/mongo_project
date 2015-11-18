@@ -3,7 +3,20 @@
   <ul class="list-group">
     <% @all_articles.each do |article| %>
       <li class="list-group-item">
+<<<<<<< HEAD
+<<<<<<< HEAD
         <h4><%= link_to article.title, user_article_path(article.user, article) %></h4>
+=======
+=======
+>>>>>>> c9ec5ef... 使用 gravatar 生成用户头像
+        <h4>
+        <%= image_tag avatar_url(article.user, 30) %>
+        <%= link_to article.title, user_article_path(article.user, article) %>
+      </h4>
+<<<<<<< HEAD
+>>>>>>> b3b7667... 去掉无用的代码
+=======
+>>>>>>> c9ec5ef... 使用 gravatar 生成用户头像
       </li>
     <% end %>
   </ul>

@@ -1,4 +1,12 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
 <%= form_for home_path, method: :get, html: { role: "search", class: "navbar-form navbar-left"} do %>
+=======
+<%= form_for home_path, method: :get, html: { role: "search", class: "navbar-form navbar-right"} do %>
+>>>>>>> b3b7667... 去掉无用的代码
+=======
+<%= form_for home_path, method: :get, html: { role: "search", class: "navbar-form navbar-right"} do %>
+>>>>>>> c9ec5ef... 使用 gravatar 生成用户头像
   <div class="form-group">
      <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search for..."%>
   </div>

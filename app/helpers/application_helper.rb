@@ -54,9 +54,26 @@ module ApplicationHelper
     Redcarpet::Markdown.new(coderayified, extensions).render(text).html_safe
   end
 
+<<<<<<< HEAD
+<<<<<<< HEAD
   def avatar_url(user)
     gravatar_id = Digest::MD5::hexdigest(user.email).downcase
     "http://gravatar.com/avatar/#{gravatar_id}.png"
   end
+=======
+=======
+>>>>>>> c9ec5ef... 使用 gravatar 生成用户头像
+  def avatar_url(user, size = 200)
+    if user.avatar_url.nil?
+      hash = Digest::MD5::hexdigest(user.email.downcase)
+      user.avatar_url = "http://www.gravatar.com/avatar/#{hash}"
+      user.save
+    end
+    user.avatar_url + "?s=#{size}"
+end
+<<<<<<< HEAD
+>>>>>>> b3b7667... 去掉无用的代码
+=======
+>>>>>>> c9ec5ef... 使用 gravatar 生成用户头像
 
 end
