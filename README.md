@@ -17,4 +17,55 @@
 ![liuzxc]
 (http://7xll4p.com1.z0.glb.clouddn.com/mongo_project_02.png)
 
+# 构建开发环境
 
+开发环境搭建可以参考我的博客 [使用 Vagrant 构建虚拟开发环境](http://liuzxc.github.io/articles/rails-app-study-16/)，如果你不想使用 vagrant，请参照下面的安装过程：
+
+#### 配置开发环境
+
+##### 安装 git
+
+```sh
+sudo apt-get install git-core
+```
+
+##### 安装 rbenv 和 ruby-build
+
+```sh
+git clone git://github.com/sstephenson/rbenv.git .
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile
+echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
+source .bash_profile
+git clone https://github.com/sstephenson/ruby-build.git
+cd ruby-build/
+sudo ./install.sh
+```
+
+##### 安装 ruby 和 rails
+
+```sh
+sudo apt-get install -y libssl-dev libreadline-dev zlib1g-dev build-essential g++ nodejs
+
+rbenv install 2.2.2
+rbenv global 2.2.2
+
+gem sources --remove https://rubygems.org/
+gem sources -a https://ruby.taobao.org/
+gem install rails -v 4.2.3
+```
+
+##### 安装 mongodb
+
+```sh
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
+echo "deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.0.list
+sudo apt-get update
+sudo apt-get install -y mongodb-org
+```
+
+##### start rails server
+
+```sh
+bundle install
+rails server
+```
