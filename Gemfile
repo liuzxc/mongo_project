@@ -58,3 +58,5 @@ gem 'redcarpet'
 gem 'coderay'
 
 gem 'rest-client'
+
+gem 'devise'
