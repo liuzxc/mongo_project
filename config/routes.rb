@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :users
   get 'sign_up' => 'users#new'
   get 'log_in' => 'sessions#new'
   get 'log_out' => 'sessions#destroy'
