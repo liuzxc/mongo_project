@@ -60,3 +60,5 @@ gem 'coderay'
 gem 'rest-client'
 
 gem 'devise'
+
+gem 'cancancan', '~> 1.10'
