@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
   end
 
   def logged_in?
-    current_user.nil? ? false : true
+    current_user ? true : false
   end
 
   def admin?
